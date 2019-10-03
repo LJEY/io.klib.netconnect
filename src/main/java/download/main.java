@@ -16,7 +16,7 @@ public class main {
         String line;
 
         try {
-            url = new URL("https://www.heise.de/");
+            url = new URL("http://www.http2demo.io/");
             is = url.openStream();  // throws an IOException
             br = new BufferedReader(new InputStreamReader(is));
 
