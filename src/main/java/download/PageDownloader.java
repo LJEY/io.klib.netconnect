@@ -7,16 +7,17 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class main {
+public class PageDownloader {
     public static void main(String[] args) {
 
         URL url;
         InputStream is = null;
         BufferedReader br;
         String line;
+        String input = args[0];
 
         try {
-            url = new URL("https://www.heise.de/");
+            url = new URL(input);
             is = url.openStream();  // throws an IOException
             br = new BufferedReader(new InputStreamReader(is));
 
