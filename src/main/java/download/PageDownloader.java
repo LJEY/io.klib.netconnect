@@ -26,13 +26,16 @@ public class PageDownloader {
             }
         } catch (MalformedURLException mue) {
             mue.printStackTrace();
+            System.exit(1);
         } catch (IOException ioe) {
             ioe.printStackTrace();
+            System.exit(1);
         } finally {
             try {
                 if (is != null) is.close();
+                System.exit(0);
             } catch (IOException ioe) {
-                // nothing to see here
+                System.exit(1);
             }
         }
 
