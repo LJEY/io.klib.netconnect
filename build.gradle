@@ -5,7 +5,7 @@ plugins {
 jar {
     manifest {
         attributes(
-                'Main-Class': 'download.PageDownloader'
+                'Main-Class': 'io.klib.netconnect.PageDownloader'
         )
     }
 }

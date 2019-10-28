@@ -1,4 +1,4 @@
-package download;
+package io.klib.netconnect;
 
 import java.io.BufferedReader;
 import java.io.IOException;
