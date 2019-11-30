@@ -60,7 +60,9 @@ then
     echo Success
 fi
 
-#HTTPS
+#HTTPS -> Echo printf("text") 
+
+#DRY
 
 AVA_VMARGS="-Dhttp.proxyHost=<127.0.0.1> -Dhttp.proxyPort=<8080>" java ${JAVA_VMARGS} -jar /home/lukas/klib/io.klib.netconnect/build/libs/io.klib.netconnect-0.1.0-SNAPSHOT.jar https://www.heise.de
 
@@ -121,3 +123,5 @@ fi
 sudo docker rm -f temp
 
 echo Nice, everything works as intended!
+
+#Redicrt std out std err
