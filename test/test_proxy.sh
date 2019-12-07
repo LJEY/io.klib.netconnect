@@ -1,25 +1,26 @@
 #!/bin/bash
 
-printf "%s\n" "Checking if a proxy for http is already defined on os levl"
+#set -u
+#set -e
 
-    if [ -z "$http_proxy" ]
+function proxyCheck {
+    printf "%s\n" "Checking if a proxy for $1 is already defined on os levl"
+    eval var='$'$1_proxy
+    echo $var
+    if [ -z "$var" ]
     then
-        printf "%s\n" "     Success, no proxy configured for http"
+        printf "%s\n" "     Success, no proxy configured for $1"
     else
-        printf "%s\n" "     Error, there already is a proxy configured for http"
+        printf "%s\n" "     Error, there already is a proxy configured for $1"
         exit 1
     fi
+}
 
-printf "%s\n" "Checking if a proxy for https is already defined on os levl"
+proxyCheck http
+proxyCheck https
 
-    if [ -z "$https_proxy" ]
-    then
-        printf "%s\n" "     Success, no proxy configured for https"
-    else
-        printf "%s\n" "     Error, there already is a proxy configured for https"
-        exit 1
-    fi
-
+exit 0 
+    
 printf "%s\n" "Testing direct connection for http"
 
     java -jar /home/lukas/klib/io.klib.netconnect/build/libs/io.klib.netconnect-0.1.0-SNAPSHOT.jar http://www.columbia.edu/~fdc/sample.html > output.log 2> error.log
