@@ -10,7 +10,7 @@ jarFile=./../build/libs/io.klib.netconnect-0.1.0-SNAPSHOT.jar
 dockerName=proxy
 
 proxyHost=127.0.0.1
-proxyPort=8080
+proxyPort=8888
 
 httpUrlWorking=http://www.httpvshttps.com/
 httpUrlBroken=http://www.httpvshttp.com/
@@ -69,7 +69,7 @@ testConnection ${httpsUrlBroken}
 printf "\n## with proxy\n\n"
 
 printf "starting forwarding proxy server docker container with\n"
-docker run --name ${dockerName} -d -p 8080:8080 klibio/io.klib.forwarding-ssl-proxy:master-latest  $1 >> ${scriptDir}/docker_output.log 2>> ${scriptDir}/docker_error.log
+docker run --name ${dockerName} -d -p 8888:8888 klibio/io.klib.tinyproxy:master-latest  $1 >> ${scriptDir}/docker_output.log 2>> ${scriptDir}/docker_error.log
 if [ $? == 0 ]; then
  printf "container successfully launched %s\n"
 else
@@ -78,10 +78,7 @@ fi
 
 printf "\n## configuring proxy\n"
 
-javaVMArgs="-Dhttp.proxyHost=127.0.0.1 -Dhttp.proxyPort=8080 -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=8080"
-
-export proxyHost=http://127.0.0.1
-export proxyPort=8080
+javaVMArgs="-Dhttp.proxyHost=$proxyHost -Dhttp.proxyPort=$proxyPort -Dhttps.proxyHost=$proxyHost -Dhttps.proxyPort=$proxyPort"
 
 #Klappt würde danach bei proxyCheck wieder rausgehen, was jetzt machen?
 #export http_proxy=$proxyHost:$proxyPort
