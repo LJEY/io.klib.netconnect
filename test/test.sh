@@ -78,7 +78,7 @@ fi
 
 printf "\n## configuring proxy\n"
 
-javaVMArgs="-Dhttp.proxyHost=127.0.0.1 -Dhttp.proxyPort=8080"
+javaVMArgs="-Dhttp.proxyHost=127.0.0.1 -Dhttp.proxyPort=8080 -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=8080"
 
 export proxyHost=http://127.0.0.1
 export proxyPort=8080
@@ -94,8 +94,6 @@ proxyCheck https
 printf "\n### testing connections\n\n"
 testConnection ${httpUrlWorking}
 testConnection ${httpUrlBroken}
-
-javaVMArgs="-Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=8080"
 
 testConnection ${httpsUrlWorking}
 testConnection ${httpsUrlBroken}
