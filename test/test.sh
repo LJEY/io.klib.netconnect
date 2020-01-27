@@ -80,14 +80,6 @@ printf "\n## configuring proxy\n"
 
 javaVMArgs="-Dhttp.proxyHost=$proxyHost -Dhttp.proxyPort=$proxyPort -Dhttps.proxyHost=$proxyHost -Dhttps.proxyPort=$proxyPort"
 
-#Klappt würde danach bei proxyCheck wieder rausgehen, was jetzt machen?
-#export http_proxy=$proxyHost:$proxyPort
-#export https_proxy=$proxyHost:$proxyPort
-
-proxyCheck http
-proxyCheck https
-
-
 printf "\n### testing connections\n\n"
 testConnection ${httpUrlWorking}
 testConnection ${httpUrlBroken}
